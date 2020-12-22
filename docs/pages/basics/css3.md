@@ -69,3 +69,33 @@
 
 ### @import
 
+
+``` html
+<style>
+	<!-- url后面是：CSS文件路径地址 -->
+    @import url(style.css);
+</style>
+```
+
+::: tip
+## link vs @import
+### 本质不一样
+* link是本质是html标签，只允许放在html代码中
+* @import可以看做是样式，必须写在style中
+* 注意：@import应写在样式表的开头，否则无法正确导入外部文件
+### 兼容性问题
+* @import存在兼容性问题，许多浏览器不支持
+* link不存在任何兼容性问题
+### 加载顺序不一样
+* 浏览器加载html的时候，如果存在link，那么link连接的CSS文件会同时被加载
+* @import引用的CSS会等到页面全部被下载完再被加载，所以有时候浏览@import加载CSS的页面时开始会没有样式（就是闪烁），网速慢的时候还挺明显
+### JavaScript支持
+* link 支持使用JavaScript控制DOM改变CSS样式
+* @import 不支持JavaScript修改和控制DOM
+### 循环引入
+* link连接的文件，不支持再次连接CSS文件
+* @import支持再次引入文件
+### 加载内容
+* link不仅仅可以加载CSS，还可以加载许多别的数据
+* @import只能加载CSS
+:::
